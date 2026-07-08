@@ -7,8 +7,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- HTTP / OpenAPI -->
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
-    <PackageVersion Include="Scalar.AspNetCore"  Version="2.16.5" />
+    <PackageVersion Include="CSharpFunctionalExtensions" Version="3.7.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="3.8.0" />
+    <PackageVersion Include="Scalar.AspNetCore" Version="2.16.10" />
     <!-- Анализаторы (версии здесь, подключение в Directory.Build.props) -->
     <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0" />
     <PackageVersion Include="Meziantou.Analyzer" Version="3.0.44" />

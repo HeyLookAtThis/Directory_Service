@@ -41,6 +41,14 @@ dotnet_diagnostic.S1135.severity = none
 # S1144: неиспользуемые private члены — ложные срабатывания на EF shadow props
 dotnet_diagnostic.S1144.severity = none
 
+# Свои изменения
+
+# CA1716: использование резервных слов (Error)
+dotnet_diagnostic.CA1716.severity = none
+
+# CA1707: исползовние нижнего подчеркивания в названиях (NOT_FOUND)
+dotnet_diagnostic.CA1707.severity = none
+
 # Правила строже, чем по умолчанию:
 dotnet_diagnostic.S1125.severity = error  # Redundant Boolean literal
 dotnet_diagnostic.S6673.severity = error  # Serilog template placeholder order
