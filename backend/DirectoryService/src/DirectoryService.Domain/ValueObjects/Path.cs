@@ -12,8 +12,6 @@ namespace DirectoryService.Domain.ValueObjects
                 Value = parentPath.Value + SEPARATOR + identifier;
         }
 
-        public static char Separator => SEPARATOR;
-
         public string Value { get; }
     }
 }
