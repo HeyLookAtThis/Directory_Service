@@ -56,7 +56,7 @@ namespace DirectoryService.Domain.Departments
             if (slugResult.IsFailure)
                 return slugResult.Error;
 
-            Path path = new(parentPath, slug);
+            Path path = new(parentPath, slugResult.Value.Value);
 
             return new Department(Guid.NewGuid(), nameResult.Value, slugResult.Value, parentId, path);
         }

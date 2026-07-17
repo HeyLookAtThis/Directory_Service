@@ -14,6 +14,10 @@ namespace DirectoryService.Domain.ValueObjects
 
         public static Result<Slug, Error> Create(string value, string invalidField)
         {
+            if (string.IsNullOrWhiteSpace(value))
+                return Error.Validation(invalidField + ".Identifier",
+                        "идентификатор не может быть пустым", invalidField);
+
             bool isLetter = true;
 
             foreach (var symbol in value)
@@ -25,12 +29,13 @@ namespace DirectoryService.Domain.ValueObjects
                         "идентификатор должен состоять только из латиницы", invalidField);
             }
 
-            if (string.IsNullOrWhiteSpace(value))
-                return Error.Validation(invalidField + ".Identifier", "идентификатор не может быть пустым", invalidField);
-            else if (value.Length < MIN_LENGTH)
-                return Error.Validation(invalidField + ".Identifier", "слишком короткий идентификатор", invalidField);
+
+            if (value.Length < MIN_LENGTH)
+                return Error.Validation(invalidField + ".Identifier",
+                        "слишком короткий идентификатор", invalidField);
             else if (value.Length > MAX_LENGTH)
-                return Error.Validation(invalidField + ".Identifier", "слишком длинный идентификатор", invalidField);
+                return Error.Validation(invalidField + ".Identifier",
+                        "слишком длинный идентификатор", invalidField);
 
             return new Slug(value);
         }

@@ -9,7 +9,7 @@ namespace DirectoryService.Domain.ValueObjects
         private const int POSTAL_CODE_LENGTH = 6;
 
         private Address(
-            short postalCode,
+            string postalCode,
             string country,
             string region,
             string city,
@@ -24,7 +24,7 @@ namespace DirectoryService.Domain.ValueObjects
             House = house;
         }
 
-        public short PostalСode { get; }
+        public string PostalСode { get; }
 
         public string Country { get; }
 
@@ -37,7 +37,7 @@ namespace DirectoryService.Domain.ValueObjects
         public string House { get; }
 
         public static Result<Address, Error> Create(
-            short postalCode,
+            string postalCode,
             string country,
             string region,
             string city,
@@ -45,6 +45,17 @@ namespace DirectoryService.Domain.ValueObjects
             string house,
             string invalidField)
         {
+            bool isDigit = true;
+
+            foreach (var symbol in postalCode)
+            {
+                isDigit = Char.IsDigit(symbol);
+
+                if (!isDigit)
+                    return Error.Validation(invalidField + ".Address",
+                        "почтовый код должен состоять только из чисел", invalidField);
+            }
+
             if (string.IsNullOrWhiteSpace(postalCode.ToString(CultureInfo.InvariantCulture)))
                 return Error.Validation(invalidField + ".Address", "укажите почтовый код", invalidField);
             else if (postalCode.ToString(CultureInfo.InvariantCulture).Length != POSTAL_CODE_LENGTH)
